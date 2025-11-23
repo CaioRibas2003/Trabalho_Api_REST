@@ -18,18 +18,18 @@ public class ProdutoService {
         return repository.save(produto);
     }
 
-    //Cria uma lista do tipo Produto, findAll busca no BD as informaçoes e jogo nessa lista retornando ela
+    //Cria uma lista do tipo Produto, findAll busca no BD as informaçoes e joga nessa lista retornando ela
     public List<Produto> listarProdutos() {
         return repository.findAll();
     }
 
-    //Procura o usuario por id, se não encontrar retorna nulo
+    //Procura o produto por id, se não encontrar retorna nulo
     public Produto buscarPorId(Long id) {
         return repository.findById(id).orElse(null);
     }
 
-    //Recebe por paramentro o id do usuario a ser atualizado, e as informacoes da mudanca (mudanca completa)
-    //A nova variavel Usuario procura pelo usuario atual atraves do id, se achar atualizar e salva no repositorio
+    //Recebe por parametro o id do produto a ser atualizado, e as informacoes da mudanca (mudanca completa)
+    //A nova variavel Produto procura pelo produto atual atraves do id, se achar atualizar e salva no repositorio
     public Produto atualizarProduto(Long id, Produto mudanca) {
         Produto atualizar = buscarPorId(id);
         if(atualizar == null) return null;
@@ -40,7 +40,7 @@ public class ProdutoService {
         return repository.save(atualizar);
     }
 
-    //Se existir esse Id, as info sao deletas, se nao existir retorna false
+    //Se existir esse Id, as info sao deletadas, se nao existir retorna false
     public boolean deletarProduto(Long id) {
         if(!repository.existsById(id)) return false;
         repository.deleteById(id);
