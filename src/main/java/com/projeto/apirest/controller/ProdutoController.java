@@ -32,7 +32,7 @@ public class ProdutoController {
                 .body("Produto criado com sucesso! ID: " + novo.getId());
     }
 
-    //Faz a busca de todos os Usuarios, retornando ok e a lista
+    //Faz a busca de todos os Produtos, retornando ok e a lista
     @GetMapping
     public ResponseEntity<List<Produto>> listarTodos() {
         return ResponseEntity
@@ -40,7 +40,7 @@ public class ProdutoController {
                 .body(service.listarProdutos());
     }
 
-    //Faz a busca por id especifico, se não existir retorna um not found, se exisir retorna o Usuario e ok
+    //Faz a busca por id especifico, se não existir retorna um not found, se exisir retorna o Produto e ok
     @GetMapping("/{id}")
     public ResponseEntity<?> buscarPorId(@PathVariable long id) {
         Produto produto = service.buscarPorId(id);
@@ -55,7 +55,7 @@ public class ProdutoController {
                 .body(produto);
     }
 
-    //Atualiza o usuario, se nao existir retorna um not found, se existir retorna ok atualizando ele
+    //Atualiza o Produto, se nao existir retorna um not found, se existir retorna ok atualizando ele
     @PutMapping("/{id}")
     public ResponseEntity<?> atualizar(@PathVariable long id, @RequestBody Produto dados) {
         Produto atualizado = service.atualizarProduto(id, dados);
@@ -70,7 +70,7 @@ public class ProdutoController {
                 .body("Produto atualizado com sucesso!");
     }
 
-    //Atualiza o usuario, se nao existir retorna um not found, se existir retorna ok atualizando ele
+    //Deleta produto via id, se nao encontrar retorna not found, se encontrar deleta
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deletar(@PathVariable long id) {
         boolean removido = service.deletarProduto(id);
