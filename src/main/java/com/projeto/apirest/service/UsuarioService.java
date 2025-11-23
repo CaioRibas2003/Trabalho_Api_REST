@@ -22,7 +22,7 @@ public class UsuarioService {
         return repository.save(usuario);
     }
 
-    //Cria uma lista do tipo Usuario, findAll busca no BD as informaçoes e jogo nessa lista retornando ela
+    //Cria uma lista do tipo Usuario, findAll busca no BD as informaçoes e joga nessa lista retornando ela
     public List<Usuario> listarUsuarios() {
         return repository.findAll();
     }
@@ -32,7 +32,7 @@ public class UsuarioService {
         return repository.findById(id).orElse(null);
     }
 
-    //Recebe por paramentro o id do usuario a ser atualizado, e as informacoes da mudanca (mudanca completa)
+    //Recebe por parametro o id do usuario a ser atualizado, e as informacoes da mudanca (mudanca completa)
     //A nova variavel Usuario procura pelo usuario atual atraves do id, se achar atualizar e salva no repositorio
     public Usuario atualizarUsuario(Long id, Usuario mudanca) {
         Usuario atualizar = buscarPorId(id);
@@ -44,7 +44,7 @@ public class UsuarioService {
         return repository.save(atualizar);
     }
 
-    //Se existir esse Id, as info sao deletas, se nao existir retorna false
+    //Se existir esse Id, as info sao deletadas, se nao existir retorna false
     public boolean deletarUsuario(Long id) {
         if(!repository.existsById(id)) return false;
         repository.deleteById(id);
